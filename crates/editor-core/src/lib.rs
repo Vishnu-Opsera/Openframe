@@ -1,6 +1,7 @@
 pub mod render_adapter;
 pub mod render_tree;
 pub mod scene_graph;
+pub mod transactions;
 pub mod wasm;
 
 use serde::Serialize;

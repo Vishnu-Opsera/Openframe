@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "label": "create-frame-with-children",
+      "rollback": false,
+      "steps": [
+        { "kind": "insert", "id": "frame-1", "index": 0 },
+        { "kind": "insert", "id": "child-1", "parent_id": "frame-1", "index": 0 }
+      ]
+    },
+    {
+      "label": "move-and-reorder",
+      "rollback": false,
+      "steps": [
+        { "kind": "move", "id": "child-1", "index": 1 },
+        { "kind": "reorder", "id": "frame-1", "index": 0 }
+      ]
+    },
+    {
+      "label": "rollback",
+      "rollback": true,
+      "steps": [
+        { "kind": "insert", "id": "temp-1", "index": 1 }
+      ]
+    }
+  ]
+}
