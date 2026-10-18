@@ -22,4 +22,6 @@ export interface SceneDocument {
   selectedPointId: string | null
   componentRegistry: import('./components.ts').ComponentRegistry
   review: import('../collaboration/versionHistory.ts').ReviewState
+  tokens: import('./tokens.ts').DesignToken[]
+  tokenCollections: string[]
 }

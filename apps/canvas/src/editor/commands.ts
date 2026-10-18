@@ -36,6 +36,9 @@ export type EditorCommand =
   | { type: 'switchVariant'; instanceId: string; variant: string }
   | { type: 'resetInstanceOverride'; instanceId: string }
   | { type: 'detachInstance'; instanceId: string }
+  | { type: 'createTokenCollection'; collectionId: string }
+  | { type: 'createToken'; tokenId: string; alias: string }
+  | { type: 'bindNodeStyleToken'; tokenId: string; nodeId: string }
   | { type: 'undo' }
   | { type: 'redo' }
 

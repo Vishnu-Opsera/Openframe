@@ -4,6 +4,7 @@ import { notifyRender } from '../scene/renderAdapter.ts'
 import { createEmptyDocument, createNode, deleteNode, groupNodes, reorderNode, ungroupNode } from '../scene/sceneGraph.ts'
 import { applyTextCommand, isTextCommand } from './textCommands.ts'
 import { applyComponentCommand, isComponentCommand } from './componentCommands.ts'
+import { applyTokenCommand, isTokenCommand } from './tokenCommands.ts'
 import { applyLayoutCommand, isLayoutCommand } from './layoutCommands.ts'
 import { applyVectorCommand, isVectorCommand } from './vectorCommands.ts'
 import type { SceneDocument } from '../scene/nodeTypes.ts'
@@ -43,6 +44,9 @@ export function dispatchEditorCommand(command: EditorCommand): EditorCommandResu
   }
   if (isComponentCommand(command)) {
     return applyComponentCommand(documentState, command, `tx-${transactionCount++}`)
+  }
+  if (isTokenCommand(command)) {
+    return applyTokenCommand(documentState, command, `tx-${transactionCount++}`)
   }
   if ('width' in command && command.width < 0) {
     return error(command.type, 'negative_dimension', 'Frame dimensions must be positive')

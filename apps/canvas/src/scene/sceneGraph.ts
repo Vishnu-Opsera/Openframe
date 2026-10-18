@@ -30,6 +30,8 @@ export function createEmptyDocument(): SceneDocument {
     selectedPointId: null,
     componentRegistry: { components: {}, instances: {} },
     review: { links: [], threads: [], versions: [] },
+    tokens: [],
+    tokenCollections: [],
   }
 }
 
