@@ -1,0 +1,5 @@
+jobs:
+  build:node: { script: build:node, artifact: canvas-web }
+  build:rust: { script: build:rust, artifact: canvas-rust-core }
+  build:docker: { script: build:docker, artifact: canvas-sync-images, event: release_tag }
+  build:wasm-package: { script: build:wasm-package, artifact: canvas-wasm, event: release_tag }

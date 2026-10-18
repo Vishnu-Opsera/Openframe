@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "build": "vite build",
+    "build:node": "vite build",
+    "build:wasm-package": "node scripts/build-wasm.mjs",
     "build:wasm": "node scripts/build-wasm.mjs",
     "preview": "vite preview",
     "e2e": "playwright test",
