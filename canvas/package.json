@@ -1,0 +1,1 @@
+{"scripts":{"test:plugin-permissions":"vitest run canvas/src/plugins/runtime/__tests__/pluginPermissionRegression.test.ts canvas/src/server/audit/__tests__/pluginPermissionAuditRegression.test.ts"}}

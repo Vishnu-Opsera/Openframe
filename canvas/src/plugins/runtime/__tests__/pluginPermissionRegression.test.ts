@@ -1,0 +1,3 @@
+import { describe, expect, it } from 'vitest'
+import { createCapabilityBroker } from '../capabilityBroker.ts'
+describe('permission regression', () => { it('denies filesystem, credentials, and comment-only mutation', () => { const broker = createCapabilityBroker({ capabilities: ['comments.write'] }, ['comments.write']); expect(broker.dispatchCapabilityRequest({ capability: 'fs.readFile' }).code).toBe('PLUGIN_CAPABILITY_DENIED'); expect(broker.dispatchCapabilityRequest({ capability: 'credential.get' }).code).toBe('PLUGIN_CAPABILITY_DENIED'); expect(broker.dispatchCapabilityRequest({ capability: 'scene.mutate' }).code).toBe('PLUGIN_CAPABILITY_DENIED') }) })
