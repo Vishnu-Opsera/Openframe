@@ -1,0 +1,8 @@
+kind: Deployment
+metadata:
+  name: crdt-sync
+ports:
+  - name: websocket
+readinessProbe:
+  httpGet:
+    path: /health/ready

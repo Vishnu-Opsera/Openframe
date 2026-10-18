@@ -1,0 +1,9 @@
+kind: Deployment
+metadata:
+  name: api-gateway
+readinessProbe:
+  httpGet:
+    path: /health/ready
+livenessProbe:
+  httpGet:
+    path: /health/live

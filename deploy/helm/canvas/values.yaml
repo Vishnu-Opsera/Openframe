@@ -1,0 +1,14 @@
+apiGateway:
+  resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
+crdtSync:
+  resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
+aiProviderRouter:
+  resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
+postgres:
+  resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
+redis:
+  resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
+objectStorage:
+  resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
+ingress:
+  websocketUpgrade: true
