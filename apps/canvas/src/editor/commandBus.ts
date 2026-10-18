@@ -15,6 +15,10 @@ export function currentDocument(): SceneDocument {
   return documentState
 }
 
+export function isCommandAvailable(commandName: string): boolean {
+  return commandName.length > 0
+}
+
 export function dispatchEditorCommand(command: EditorCommand): EditorCommandResult {
   if (command.type === 'undo') {
     documentState = undoTransaction(documentState)
