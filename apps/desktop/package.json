@@ -1,0 +1,8 @@
+{
+  "name": "canvas-desktop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:integration": "pnpm --dir ../.. exec vitest run"
+  }
+}
