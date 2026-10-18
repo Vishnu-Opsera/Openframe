@@ -1,0 +1,1 @@
+blocking: [snyk, gitleaks, semgrep, grype]

@@ -3,3 +3,10 @@ jobs:
   build:rust: { script: build:rust, artifact: canvas-rust-core }
   build:docker: { script: build:docker, artifact: canvas-sync-images, event: release_tag }
   build:wasm-package: { script: build:wasm-package, artifact: canvas-wasm, event: release_tag }
+  scan:sonarqube: { after: build }
+  scan:snyk: { after: build }
+  scan:gitleaks: { after: build }
+  scan:semgrep: { after: build }
+  scan:grype: { consumes: canvas-sync-images }
+  sbom:generate: { consumes: [canvas-web, canvas-wasm, canvas-sync-images] }
+  attest:artifacts: { after: sbom }
