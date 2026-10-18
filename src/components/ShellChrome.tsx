@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { EditorViewport } from './EditorViewport'
 
 export type EditorHostState = 'empty' | 'ready' | 'unavailable'
 
@@ -46,6 +47,7 @@ export function ShellChrome({
       <main className="workspace">
         <section className="editor-host" data-testid="canvas-editor-host" aria-label="Editor host">
           <p data-testid="canvas-editor-host-copy">{editorHostCopy(editorHostState, loadError)}</p>
+          {editorHostState !== 'unavailable' ? <EditorViewport /> : null}
           {editorHostState !== 'unavailable' ? (
             <p className="file-count" data-testid="canvas-file-count">
               {fileCount === 0 ? 'Empty workspace' : `${fileCount} files`}

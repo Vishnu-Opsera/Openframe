@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "build": "vite build",
+    "build:wasm": "node scripts/build-wasm.mjs",
     "preview": "vite preview",
     "e2e": "playwright test",
     "tauri": "tauri",

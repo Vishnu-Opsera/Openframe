@@ -1,0 +1,5 @@
+{
+  "code": "wasm_artifact_missing",
+  "message": "Openframe could not load the editor core. Rebuild the WASM artifact and reload.",
+  "recoverable": false
+}

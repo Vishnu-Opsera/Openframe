@@ -1,0 +1,9 @@
+{
+  "name": "editor-core",
+  "version": "0.1.0",
+  "runtime_target": "wasm32-unknown-unknown",
+  "module": "/wasm/editor_core.js",
+  "binary": "/wasm/editor_core_bg.wasm",
+  "capabilities": ["status"],
+  "renderer_boundary": "external"
+}
