@@ -1,0 +1,4 @@
+{
+  "config": { "endpoint": "https://storage.example.test", "bucket": "openframe-test", "region": "local", "credentialRef": "secret://workspace/test/storage" },
+  "artifacts": ["blob", "file_version", "thumbnail", "import_asset", "export_artifact"]
+}
