@@ -1,0 +1,1 @@
+{"jobId":"unsafe-1","status":"rejected","findings":[{"code":"UNSAFE_SVG_SCRIPT","remediation":"Remove scripts"}]}
