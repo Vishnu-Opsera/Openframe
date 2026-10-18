@@ -2,10 +2,13 @@ import type { SyncConnectionState } from '../../collaboration/webSocketSyncClien
 
 const states: SyncConnectionState[] = ['disconnected', 'connecting', 'connected', 'reconnecting', 'unauthorized', 'offline']
 
-export function EditorWorkspace({ connectionState = 'disconnected' }: { connectionState?: SyncConnectionState }) {
+export function EditorWorkspace({ connectionState = 'disconnected', collaborationStatus = 'synced' }: { connectionState?: SyncConnectionState; collaborationStatus?: 'offline' | 'reconnecting' | 'syncing' | 'synced' }) {
   return (
-    <p data-testid="sync-connection-state">
-      {states.includes(connectionState) ? connectionState : 'disconnected'}
-    </p>
+    <div>
+      <p data-testid="sync-connection-state">
+        {states.includes(connectionState) ? connectionState : 'disconnected'}
+      </p>
+      <p data-testid="collaboration-status">{collaborationStatus}</p>
+    </div>
   )
 }
