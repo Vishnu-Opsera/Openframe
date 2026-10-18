@@ -1,0 +1,28 @@
+services:
+  api-gateway:
+    image: openframe/api-gateway:local
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+  crdt-sync:
+    image: openframe/crdt-sync:local
+    environment:
+      REDIS_URL: ${REDIS_URL}
+  ai-provider-router:
+    image: openframe/ai-provider-router:local
+    environment:
+      AI_PROVIDER_DEFAULT_MODE: stub
+  postgres:
+    image: postgres:16
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  redis:
+    image: redis:7
+    volumes:
+      - redis-data:/data
+  object-storage:
+    image: minio/minio:latest
+    environment:
+      OBJECT_STORAGE_ENDPOINT: ${OBJECT_STORAGE_ENDPOINT}
+volumes:
+  postgres-data:
+  redis-data:
