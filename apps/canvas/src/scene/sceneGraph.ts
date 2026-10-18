@@ -1,11 +1,29 @@
+import { recomputeLayout } from './layout.ts'
 import type { SceneDocument, SceneNode } from './nodeTypes.ts'
+
+export function recomputeFrameLayout(document: SceneDocument, frameId: string): string[] {
+  const frame = document.nodes[frameId]
+  if (!frame) {
+    return []
+  }
+  const children = frame.childIds.flatMap((id) => {
+    const child = document.nodes[id]
+    return child ? [{ id: child.id, width: child.width, height: child.height, sizing: 'fixed' as const }] : []
+  })
+  const placed = recomputeLayout(children, frame.layoutMode === 'grid' ? 'grid' : 'flex')
+  if ('error' in placed) {
+    return []
+  }
+  frame.dirty = true
+  return placed.map((item) => item.id)
+}
 
 let nextId = 1
 
 export function createEmptyDocument(): SceneDocument {
   return {
     nodes: {
-      page: { id: 'page', kind: 'page', parentId: null, childIds: [], x: 0, y: 0, width: 800, height: 600, zOrder: 0, fill: 'none', locked: false },
+      page: { id: 'page', kind: 'page', parentId: null, childIds: [], x: 0, y: 0, width: 800, height: 600, zOrder: 0, fill: 'none', locked: false, constraint: 'fixed', layoutMode: 'none', dirty: false },
     },
     vectorPaths: {},
     textNodes: {},
@@ -13,7 +31,7 @@ export function createEmptyDocument(): SceneDocument {
   }
 }
 
-export function createNode(document: SceneDocument, node: Omit<SceneNode, 'id' | 'childIds' | 'zOrder' | 'fill' | 'locked'> & Partial<Pick<SceneNode, 'fill' | 'locked'>>): SceneNode {
+export function createNode(document: SceneDocument, node: Omit<SceneNode, 'id' | 'childIds' | 'zOrder' | 'fill' | 'locked' | 'constraint' | 'layoutMode' | 'dirty'> & Partial<Pick<SceneNode, 'fill' | 'locked'>>): SceneNode {
   const parent = node.parentId ? document.nodes[node.parentId] : undefined
   const created: SceneNode = {
     id: `node-${nextId++}`,
@@ -27,6 +45,9 @@ export function createNode(document: SceneDocument, node: Omit<SceneNode, 'id' |
     zOrder: parent ? parent.childIds.length : 0,
     fill: node.fill ?? 'none',
     locked: node.locked ?? false,
+    constraint: 'fixed',
+    layoutMode: 'none',
+    dirty: false,
   }
   document.nodes[created.id] = created
   if (parent) {

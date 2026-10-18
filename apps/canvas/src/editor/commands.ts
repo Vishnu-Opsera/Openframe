@@ -25,6 +25,12 @@ export type EditorCommand =
   | { type: 'updateTextRangeStyle'; nodeId: string; start: number; end: number; fontSize: number }
   | { type: 'updateParagraphStyle'; nodeId: string; alignment: 'left' | 'center' | 'right' }
   | { type: 'updateVariableFontAxis'; nodeId: string; tag: string; value: number }
+  | { type: 'updateConstraints'; nodeId: string; constraint: 'left' | 'right' | 'top' | 'bottom' | 'center' | 'scale' | 'fixed' | 'stretch' }
+  | { type: 'enableAutoLayout'; nodeId: string; mode: 'none' | 'flex' | 'grid' }
+  | { type: 'updateFlexLayout'; nodeId: string; direction: 'row' | 'column'; wrap: boolean; padding: number; gap: number }
+  | { type: 'updateGridLayout'; nodeId: string; columns: number; padding: number; gap: number }
+  | { type: 'reorderAutoLayoutChild'; nodeId: string; childId: string; index: number }
+  | { type: 'resizeAutoLayoutFrame'; nodeId: string; width: number; height: number }
   | { type: 'undo' }
   | { type: 'redo' }
 

@@ -3,6 +3,7 @@ import { beginTransaction, commitTransaction, redoTransaction, rememberTransacti
 import { notifyRender } from '../scene/renderAdapter.ts'
 import { createEmptyDocument, createNode, deleteNode, groupNodes, reorderNode, ungroupNode } from '../scene/sceneGraph.ts'
 import { applyTextCommand, isTextCommand } from './textCommands.ts'
+import { applyLayoutCommand, isLayoutCommand } from './layoutCommands.ts'
 import { applyVectorCommand, isVectorCommand } from './vectorCommands.ts'
 import type { SceneDocument } from '../scene/nodeTypes.ts'
 
@@ -35,6 +36,9 @@ export function dispatchEditorCommand(command: EditorCommand): EditorCommandResu
   }
   if (isTextCommand(command)) {
     return applyTextCommand(documentState, command, `tx-${transactionCount++}`)
+  }
+  if (isLayoutCommand(command)) {
+    return applyLayoutCommand(documentState, command, `tx-${transactionCount++}`)
   }
   if ('width' in command && command.width < 0) {
     return error(command.type, 'negative_dimension', 'Frame dimensions must be positive')

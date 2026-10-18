@@ -10,6 +10,9 @@ export interface SceneNode {
   zOrder: number
   fill: string
   locked: boolean
+  constraint: 'left' | 'right' | 'top' | 'bottom' | 'center' | 'scale' | 'fixed' | 'stretch'
+  layoutMode: 'none' | 'flex' | 'grid'
+  dirty: boolean
 }
 
 export interface SceneDocument {
