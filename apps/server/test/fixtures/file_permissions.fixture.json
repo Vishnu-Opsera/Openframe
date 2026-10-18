@@ -1,0 +1,10 @@
+{
+  "rows": [
+    { "actorUserId": "user-allow", "designFileId": "file-1", "action": "open", "allow": true },
+    { "actorUserId": "user-allow", "designFileId": "file-1", "action": "edit", "allow": true },
+    { "actorUserId": "user-allow", "designFileId": "file-1", "action": "comment", "allow": true },
+    { "actorUserId": "user-allow", "designFileId": "file-1", "action": "export", "allow": false },
+    { "actorUserId": "user-allow", "designFileId": "file-1", "action": "plugin", "allow": false },
+    { "actorUserId": "user-allow", "designFileId": "file-1", "action": "provider", "allow": false }
+  ]
+}
