@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "actor_user_id": "11111111-1111-1111-1111-111111111111",
+      "email": "ada@openframe.test",
+      "password_hash": "fixture-password",
+      "disabled": false
+    }
+  ]
+}
