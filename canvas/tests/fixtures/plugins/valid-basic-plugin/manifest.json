@@ -1,1 +1,1 @@
-{ "entrypoint": "index.js", "capabilities": ["scene.read", "selection.read"] }
+{"valid":true}
