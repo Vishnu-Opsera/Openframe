@@ -1,0 +1,7 @@
+[
+  { "type": "createFrame", "nodeId": "frame-1", "parentId": "page", "zIndex": 0, "x": 0, "y": 0 },
+  { "type": "createShape", "nodeId": "shape-1", "parentId": "frame-1", "zIndex": 1, "x": 4, "y": 4 },
+  { "type": "updateTransform", "nodeId": "shape-1", "parentId": "frame-1", "zIndex": 1, "x": 12, "y": 8 },
+  { "type": "moveNode", "nodeId": "shape-1", "parentId": "page", "zIndex": 2, "x": 12, "y": 8 },
+  { "type": "deleteNode", "nodeId": "shape-1", "parentId": null, "zIndex": 0, "x": 0, "y": 0 }
+]
