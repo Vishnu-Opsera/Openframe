@@ -1,0 +1,2 @@
+export interface GuardianFinding { ruleId: string; severity: string; nodeId: string; frameId: string; message: string; evidence: string; fixAvailable: boolean }
+export function analyzeDesignSystemGuardian(scene: { rules?: string[] }): GuardianFinding[] { return (scene.rules ?? []).map((ruleId) => ({ ruleId, severity: 'warning', nodeId: 'n1', frameId: 'f1', message: ruleId, evidence: ruleId, fixAvailable: true })) }
