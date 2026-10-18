@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import { currentDocument } from '../../editor/commandBus.ts'
 import { handleKeyboardEvent } from '../shortcuts/keyboardController.ts'
+import { CommentDrawer } from './CommentDrawer.tsx'
+import { PrototypePanel } from './PrototypePanel.tsx'
+import { VersionHistoryPanel } from './VersionHistoryPanel.tsx'
+import { LayersTree } from '../layers/LayersTree.tsx'
 import { InspectorPanel } from '../inspector/InspectorPanel.tsx'
 import { PenTool } from '../tools/PenTool.tsx'
 import { Toolbar } from '../toolbar/Toolbar.tsx'
@@ -31,6 +35,10 @@ export function EditorWorkspace() {
       <Toolbar />
       <PenTool />
       <InspectorPanel />
+      <LayersTree />
+      <PrototypePanel />
+      <CommentDrawer />
+      <VersionHistoryPanel />
       <input data-testid="text-caret" value={caret} onChange={(event) => setCaret(Number(event.target.value) || 0)} />
       <canvas data-testid="gpu-canvas" data-node-count={count} />
     </section>
