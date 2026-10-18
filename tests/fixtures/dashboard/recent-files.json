@@ -1,0 +1,6 @@
+{
+  "files": [
+    { "id": "file-home", "name": "Homepage" },
+    { "id": "file-pricing", "name": "Pricing" }
+  ]
+}

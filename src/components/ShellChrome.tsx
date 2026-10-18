@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 export type EditorHostState = 'empty' | 'ready' | 'unavailable'
 
 export type ShellChromeProps = {
@@ -6,6 +8,7 @@ export type ShellChromeProps = {
   editorHostState: EditorHostState
   fileCount: number
   loadError: string | null
+  children?: ReactNode
 }
 
 function editorHostCopy(state: EditorHostState, loadError: string | null): string {
@@ -24,6 +27,7 @@ export function ShellChrome({
   editorHostState,
   fileCount,
   loadError,
+  children,
 }: ShellChromeProps) {
   return (
     <div className="shell" data-testid="canvas-app-shell">
@@ -51,6 +55,7 @@ export function ShellChrome({
         <aside className="status" data-testid="canvas-status-region" aria-label="Operational status">
           <h2>Status</h2>
           <p>UI chrome only. Scene rendering stays outside this shell.</p>
+          {children}
         </aside>
       </main>
     </div>

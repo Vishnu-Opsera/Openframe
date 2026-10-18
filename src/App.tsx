@@ -1,4 +1,5 @@
 import { ShellChrome, type EditorHostState } from './components/ShellChrome'
+import { WorkspaceDashboard } from './dashboard/WorkspaceDashboard'
 import { loadDefaultWorkspace } from './workspace'
 
 export function App() {
@@ -25,6 +26,8 @@ export function App() {
       editorHostState={editorHostState}
       fileCount={loaded.workspace.files.length}
       loadError={null}
-    />
+    >
+      <WorkspaceDashboard />
+    </ShellChrome>
   )
 }

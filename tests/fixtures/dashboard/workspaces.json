@@ -1,0 +1,6 @@
+{
+  "workspaces": [
+    { "id": "ws-northwind", "name": "Northwind Product" },
+    { "id": "ws-studio", "name": "Studio System" }
+  ]
+}
