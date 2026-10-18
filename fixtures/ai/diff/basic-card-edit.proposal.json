@@ -1,0 +1,1 @@
+{"operations":[{"type":"createNode","operationId":"1"},{"type":"updateNode","operationId":"2"},{"type":"deleteNode","operationId":"3"},{"type":"moveNode","operationId":"4"},{"type":"updateTokenRef","operationId":"5"},{"type":"updateConstraint","operationId":"6"}]}
