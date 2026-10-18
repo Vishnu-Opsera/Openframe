@@ -8,6 +8,7 @@ export interface CrdtOperationMetrics {
 
 export interface SemanticMergeIssue {
   code: 'semantic_conflict'
+  type?: 'unsafe_undo_target_deleted'
   nodeId: string
 }
 
@@ -26,7 +27,7 @@ export interface SceneOperation {
 }
 
 export interface CrdtAdapter {
-  applySceneOperation(operation: SceneOperation, scope: { documentId: string }): {
+  applySceneOperation(operation: SceneOperation, scope: { documentId: string; actorId?: string; clientId?: string; transactionGroupId?: string }): {
     update: Uint8Array
     snapshotVersion: string
     metrics: CrdtOperationMetrics

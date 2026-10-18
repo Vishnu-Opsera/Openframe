@@ -20,8 +20,11 @@ export function createYjsCrdtAdapter(): CrdtAdapter {
   }
 
   return {
-    applySceneOperation(operation) {
+    applySceneOperation(operation, scope) {
       const conflicts: SemanticMergeIssue[] = []
+      if (operation.type === 'deleteNode' && !nodes.has(operation.nodeId)) {
+        conflicts.push({ code: 'semantic_conflict', type: 'unsafe_undo_target_deleted', nodeId: operation.nodeId })
+      }
       if (operation.parentId && operation.parentId !== 'page' && !nodes.has(operation.parentId) && operation.type !== 'deleteNode') {
         conflicts.push({ code: 'semantic_conflict', nodeId: operation.nodeId })
       }
@@ -40,7 +43,7 @@ export function createYjsCrdtAdapter(): CrdtAdapter {
           x: operation.type === 'updateTransform' ? operation.x : current?.x ?? operation.x,
           y: operation.type === 'updateTransform' ? operation.y : current?.y ?? operation.y,
         })
-      })
+      }, scope.actorId ?? null)
       const update = Y.encodeStateAsUpdate(document)
       return { update, snapshotVersion: 'v1', metrics: metrics(operation.type, update.byteLength, conflicts.length) }
     },
