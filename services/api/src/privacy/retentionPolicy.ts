@@ -1,0 +1,1 @@
+export const retentionPolicies = { export_artifacts_24h: { hours: 24, mode: 'delete' }, presence_ephemeral_ttl: { hours: 1, mode: 'ttl' }, deleted_file_object_versions: { hours: 24, mode: 'delete' }, audit_events_1_year_minimum: { days: 365, mode: 'retain' } }

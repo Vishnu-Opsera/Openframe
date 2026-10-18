@@ -1,0 +1,1 @@
+CREATE TABLE retention_job_runs (id text, job_name text, mode text, started_at timestamptz, finished_at timestamptz, status text, candidate_count int, deleted_count int, error_count int, checkpoint text, request_id text);
