@@ -2,6 +2,8 @@ import type { EditorCommand, EditorCommandResult } from './commands.ts'
 import { beginTransaction, commitTransaction, redoTransaction, rememberTransaction, undoTransaction } from './transactions.ts'
 import { notifyRender } from '../scene/renderAdapter.ts'
 import { createEmptyDocument, createNode, deleteNode, groupNodes, reorderNode, ungroupNode } from '../scene/sceneGraph.ts'
+import { applyTextCommand, isTextCommand } from './textCommands.ts'
+import { applyVectorCommand, isVectorCommand } from './vectorCommands.ts'
 import type { SceneDocument } from '../scene/nodeTypes.ts'
 
 let documentState = createEmptyDocument()
@@ -27,6 +29,12 @@ export function dispatchEditorCommand(command: EditorCommand): EditorCommandResu
   if (command.type === 'redo') {
     documentState = redoTransaction(documentState)
     return { status: 'ok', transactionId: 'redo', changedNodeIds: [], renderDeltaId: notifyRender([], 'redo'), errors: [] }
+  }
+  if (isVectorCommand(command)) {
+    return applyVectorCommand(documentState, command, `tx-${transactionCount++}`)
+  }
+  if (isTextCommand(command)) {
+    return applyTextCommand(documentState, command, `tx-${transactionCount++}`)
   }
   if ('width' in command && command.width < 0) {
     return error(command.type, 'negative_dimension', 'Frame dimensions must be positive')

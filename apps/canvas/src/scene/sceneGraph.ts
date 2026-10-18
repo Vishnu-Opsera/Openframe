@@ -7,6 +7,9 @@ export function createEmptyDocument(): SceneDocument {
     nodes: {
       page: { id: 'page', kind: 'page', parentId: null, childIds: [], x: 0, y: 0, width: 800, height: 600, zOrder: 0, fill: 'none', locked: false },
     },
+    vectorPaths: {},
+    textNodes: {},
+    selectedPointId: null,
   }
 }
 

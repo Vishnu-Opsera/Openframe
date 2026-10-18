@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import { currentDocument } from '../../editor/commandBus.ts'
 import { handleKeyboardEvent } from '../shortcuts/keyboardController.ts'
+import { InspectorPanel } from '../inspector/InspectorPanel.tsx'
+import { PenTool } from '../tools/PenTool.tsx'
 import { Toolbar } from '../toolbar/Toolbar.tsx'
 
 export function EditorWorkspace() {
   const [lastAction, setLastAction] = useState('ready')
+  const [caret, setCaret] = useState(0)
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       const target = event.target instanceof HTMLElement ? event.target.tagName.toLowerCase() : 'div'
@@ -26,6 +29,9 @@ export function EditorWorkspace() {
   return (
     <section data-testid="editor-workspace" data-last-action={lastAction}>
       <Toolbar />
+      <PenTool />
+      <InspectorPanel />
+      <input data-testid="text-caret" value={caret} onChange={(event) => setCaret(Number(event.target.value) || 0)} />
       <canvas data-testid="gpu-canvas" data-node-count={count} />
     </section>
   )

@@ -14,4 +14,7 @@ export interface SceneNode {
 
 export interface SceneDocument {
   nodes: Record<string, SceneNode>
+  vectorPaths: Record<string, import('./vectorPath.ts').VectorPathNode>
+  textNodes: Record<string, import('./textNode.ts').TextNode>
+  selectedPointId: string | null
 }

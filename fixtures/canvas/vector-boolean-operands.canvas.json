@@ -1,0 +1,6 @@
+{
+  "paths": {
+    "left": { "anchors": [{ "id": "a", "x": 0, "y": 0 }, { "id": "b", "x": 10, "y": 0 }], "locked": false, "pageId": "page" },
+    "right": { "anchors": [{ "id": "c", "x": 10, "y": 0 }, { "id": "d", "x": 20, "y": 0 }], "locked": false, "pageId": "page" }
+  }
+}
