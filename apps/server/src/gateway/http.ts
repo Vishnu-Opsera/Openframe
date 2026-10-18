@@ -1,3 +1,4 @@
+import { writeAuditEvent } from '../audit/writer.ts'
 import { checkFilePermission, type FilePermissionRow } from '../auth/filePermissions.ts'
 import { ApiError, forbidden, notFound, toErrorResponse, type ErrorResponse } from './errors.ts'
 
@@ -23,6 +24,15 @@ export function handleProtectedRequest(path: string, actorUserId: string, rows: 
   const action = exported ? 'export' : 'open'
   const decision = checkFilePermission({ actorUserId, designFileId: fileId, action, rows })
   if (!decision.allowed) {
+    writeAuditEvent({
+      actor_user_id: actorUserId,
+      resource_type: 'design_file',
+      resource_id: fileId,
+      operation: 'file.metadata.read',
+      outcome: 'denied',
+      request_id: requestId,
+      metadata: {},
+    })
     return toErrorResponse(forbidden('Permission denied', requestId), requestId)
   }
   return { statusCode: 200, body: { ok: true } }

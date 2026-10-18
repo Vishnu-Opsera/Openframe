@@ -1,3 +1,4 @@
+import { writeAuditEvent } from '../audit/writer.ts'
 import { unauthenticated, forbidden, toErrorResponse, type ErrorResponse } from '../gateway/errors.ts'
 import { generatePkceChallenge, validateOidcCallback } from './oidcPkce.ts'
 import { canAccessFile, type FilePermission } from './rbac.ts'
@@ -33,6 +34,15 @@ export function handleAuthRequest(input: {
       const error = toErrorResponse(unauthenticated('Sign in is required', 'req-login'), 'req-login')
       return { status: error.statusCode, body: error.body }
     }
+    writeAuditEvent({
+      actor_user_id: user.actor_user_id,
+      resource_type: 'session',
+      resource_id: `session-${user.actor_user_id}`,
+      operation: 'auth.login',
+      outcome: 'allowed',
+      request_id: 'req-login',
+      metadata: { password: 'redacted-source' },
+    })
     return { status: 200, body: { actor_user_id: user.actor_user_id, session_id: `session-${user.actor_user_id}`, auth_method: 'canvas_managed' } }
   }
   if (input.path === '/api/v1/auth/oidc/start') {
