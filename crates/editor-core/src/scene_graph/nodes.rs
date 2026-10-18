@@ -1,10 +1,8 @@
 use serde::{Deserialize, Serialize};
 
 use super::geometry::{Bounds, Transform};
+use super::id::NodeId;
 use super::styles::{Effects, Fill, Stroke, TextStyle};
-
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct NodeId(pub String);
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]

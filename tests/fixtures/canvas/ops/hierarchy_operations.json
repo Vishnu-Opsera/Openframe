@@ -1,0 +1,13 @@
+{
+  "document_id": "doc-ops",
+  "operations": [
+    { "op": "insert", "id": "group-1", "kind": "group", "name": "Group", "index": 0 },
+    { "op": "insert", "id": "text-1", "kind": "text", "name": "Title", "index": 1 },
+    { "op": "insert", "id": "frame-1", "kind": "frame", "name": "Frame", "index": 0 },
+    { "op": "insert", "id": "temp-1", "kind": "vector", "name": "Temp", "index": 0 },
+    { "op": "move", "id": "temp-1", "parent_id": "group-1", "index": 0 },
+    { "op": "remove", "id": "temp-1" },
+    { "op": "reorder", "id": "text-1", "index": 2 }
+  ],
+  "expected_z_order": ["frame-1", "group-1", "text-1"]
+}
