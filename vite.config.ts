@@ -21,6 +21,7 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.test.tsx', 'src/**/*.test.ts', 'apps/canvas/**/*.test.ts', 'apps/web/**/*.spec.ts', 'packages/**/*.test.ts',
       'apps/server/**/*.test.ts',
-      'apps/desktop/**/*.spec.ts', 'scripts/**/*.test.mjs'],
+      'apps/desktop/**/*.spec.ts',
+      'services/**/*.test.ts', 'scripts/**/*.test.mjs'],
   },
 })
