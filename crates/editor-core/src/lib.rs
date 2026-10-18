@@ -1,3 +1,5 @@
+pub mod scene_graph;
+
 use serde::Serialize;
 use wasm_bindgen::prelude::*;
 

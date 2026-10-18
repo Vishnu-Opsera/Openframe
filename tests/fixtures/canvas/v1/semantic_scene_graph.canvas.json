@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "document_id": "doc-northwind",
+  "pages": [
+    {
+      "id": "page-1",
+      "kind": "page",
+      "name": "Cover",
+      "children": [
+        {
+          "id": "frame-1",
+          "kind": "frame",
+          "name": "Hero",
+          "children": [
+            {
+              "id": "group-1",
+              "kind": "group",
+              "name": "Marks",
+              "children": [
+                {
+                  "id": "vector-1",
+                  "kind": "vector",
+                  "name": "Mark",
+                  "children": [],
+                  "transform": { "x": 0, "y": 0, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+                  "bounds": { "x": 0, "y": 0, "width": 24, "height": 24 },
+                  "fills": [{ "color": "#111111", "opacity": 1 }],
+                  "strokes": [],
+                  "effects": { "shadows": [] },
+                  "text": null,
+                  "text_style": null,
+                  "vector_path": "M0 0 L24 24",
+                  "component_id": null,
+                  "token_id": "color.ink"
+                }
+              ],
+              "transform": { "x": 0, "y": 0, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+              "bounds": { "x": 0, "y": 0, "width": 24, "height": 24 },
+              "fills": [],
+              "strokes": [],
+              "effects": { "shadows": [] },
+              "text": null,
+              "text_style": null,
+              "vector_path": null,
+              "component_id": null,
+              "token_id": null
+            },
+            {
+              "id": "text-1",
+              "kind": "text",
+              "name": "Title",
+              "children": [],
+              "transform": { "x": 32, "y": 0, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+              "bounds": { "x": 32, "y": 0, "width": 200, "height": 32 },
+              "fills": [],
+              "strokes": [],
+              "effects": { "shadows": [] },
+              "text": "Openframe",
+              "text_style": { "font_family": "Inter", "font_size": 24 },
+              "vector_path": null,
+              "component_id": null,
+              "token_id": null
+            }
+          ],
+          "transform": { "x": 0, "y": 0, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+          "bounds": { "x": 0, "y": 0, "width": 800, "height": 600 },
+          "fills": [],
+          "strokes": [],
+          "effects": { "shadows": [] },
+          "text": null,
+          "text_style": null,
+          "vector_path": null,
+          "component_id": null,
+          "token_id": null
+        }
+      ],
+      "transform": { "x": 0, "y": 0, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+      "bounds": { "x": 0, "y": 0, "width": 800, "height": 600 },
+      "fills": [],
+      "strokes": [],
+      "effects": { "shadows": [] },
+      "text": null,
+      "text_style": null,
+      "vector_path": null,
+      "component_id": null,
+      "token_id": null
+    }
+  ],
+  "tokens": [
+    { "id": "color.ink", "name": "Ink", "values": ["#111111"] }
+  ],
+  "components": [
+    {
+      "id": "component-1",
+      "kind": "component",
+      "name": "Button",
+      "children": [],
+      "transform": { "x": 0, "y": 0, "rotation": 0, "scale_x": 1, "scale_y": 1 },
+      "bounds": { "x": 0, "y": 0, "width": 120, "height": 40 },
+      "fills": [],
+      "strokes": [],
+      "effects": { "shadows": [] },
+      "text": null,
+      "text_style": null,
+      "vector_path": null,
+      "component_id": null,
+      "token_id": null
+    }
+  ],
+  "export_metadata": { "format": "png", "scale": 2 },
+  "unsupported_elements": []
+}
