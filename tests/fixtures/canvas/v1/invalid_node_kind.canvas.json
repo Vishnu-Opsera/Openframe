@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "document_id": "doc-kind",
+  "pages": [
+    { "id": "page-1", "kind": "bitmap", "name": "Bad", "children": [] }
+  ],
+  "nodes": [],
+  "tokens": [],
+  "components": [],
+  "export_metadata": {},
+  "unsupported_elements": []
+}

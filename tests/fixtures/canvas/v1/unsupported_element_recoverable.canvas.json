@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "document_id": "doc-future",
+  "pages": [],
+  "nodes": [],
+  "tokens": [],
+  "components": [],
+  "export_metadata": {},
+  "unsupported_elements": [
+    { "field_path": "/pages/0", "node_kind": "connector", "raw": { "kept": true } }
+  ]
+}
