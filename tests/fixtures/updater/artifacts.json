@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0",
+  "notes": "Openframe desktop dry run",
+  "artifacts": [
+    { "platform": "darwin-universal", "path": "Openframe.app.tar.gz" },
+    { "platform": "windows-x86_64", "path": "Openframe-setup.exe" }
+  ]
+}

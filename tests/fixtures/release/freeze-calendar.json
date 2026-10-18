@@ -1,0 +1,5 @@
+{
+  "windows": [
+    { "start": "2026-01-01", "end": "2026-12-31", "reason": "fixture freeze" }
+  ]
+}

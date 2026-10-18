@@ -22,6 +22,12 @@
       "capabilities": ["default"]
     }
   },
+  "plugins": {
+    "updater": {
+      "endpoints": ["${TAURI_UPDATER_ENDPOINT}"],
+      "pubkey": "${TAURI_UPDATER_PUBLIC_KEY}"
+    }
+  },
   "bundle": {
     "active": true,
     "targets": ["dmg", "nsis"],

@@ -14,7 +14,9 @@
     "e2e": "playwright test",
     "tauri": "tauri",
     "tauri:dev-check": "node scripts/tauri-dev-check.mjs",
-    "check:no-electron": "node scripts/check-no-electron.mjs"
+    "check:no-electron": "node scripts/check-no-electron.mjs",
+    "release:updater:dry-run": "node scripts/release/generate-updater-manifest.mjs",
+    "release:check-freeze": "node scripts/release/check-freeze-window.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.5.0",

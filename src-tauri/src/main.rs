@@ -1,4 +1,5 @@
 mod commands;
+mod updater;
 
 fn main() {
     tauri::Builder::default()
