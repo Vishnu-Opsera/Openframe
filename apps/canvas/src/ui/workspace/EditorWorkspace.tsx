@@ -8,6 +8,7 @@ import { LayersTree } from '../layers/LayersTree.tsx'
 import { InspectorPanel } from '../inspector/InspectorPanel.tsx'
 import { PenTool } from '../tools/PenTool.tsx'
 import { Toolbar } from '../toolbar/Toolbar.tsx'
+import { CanvasSurface } from '../../../../../web/src/canvas/CanvasSurface.tsx'
 
 export function EditorWorkspace() {
   const [lastAction, setLastAction] = useState('ready')
@@ -31,16 +32,30 @@ export function EditorWorkspace() {
   }, [])
   const count = Object.keys(currentDocument().nodes).length
   return (
-    <section data-testid="editor-workspace" data-last-action={lastAction}>
-      <Toolbar />
-      <PenTool />
-      <InspectorPanel />
-      <LayersTree />
-      <PrototypePanel />
-      <CommentDrawer />
-      <VersionHistoryPanel />
-      <input data-testid="text-caret" value={caret} onChange={(event) => setCaret(Number(event.target.value) || 0)} />
-      <canvas data-testid="gpu-canvas" data-node-count={count} />
+    <section className="editor-app" data-testid="editor-workspace" data-last-action={lastAction}>
+      <div className="tool-rail" aria-label="Tools">
+        <Toolbar />
+        <PenTool />
+      </div>
+      <div className="left-pane">
+        <header className="pane-header">Layers</header>
+        <LayersTree />
+        <PrototypePanel />
+      </div>
+      <div className="stage">
+        <CanvasSurface />
+        <canvas className="gpu-canvas" data-testid="gpu-canvas" data-node-count={count} />
+      </div>
+      <div className="right-pane">
+        <header className="pane-header">Design</header>
+        <InspectorPanel />
+        <CommentDrawer />
+        <VersionHistoryPanel />
+        <label className="caret-field">
+          Caret
+          <input data-testid="text-caret" value={caret} onChange={(event) => setCaret(Number(event.target.value) || 0)} />
+        </label>
+      </div>
     </section>
   )
 }

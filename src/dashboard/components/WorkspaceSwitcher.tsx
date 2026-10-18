@@ -15,7 +15,7 @@ export function WorkspaceSwitcher({
   const selected = workspaces.find((workspace) => workspace.id === selectedId) ?? workspaces[0]
 
   return (
-    <label>
+    <label className="workspace-switch">
       Workspace
       <select
         data-testid="workspace-switcher"

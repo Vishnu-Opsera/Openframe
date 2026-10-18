@@ -27,8 +27,8 @@ export function EditorViewport({
     return <p data-testid="editor-core-error">{state.message}</p>
   }
   return (
-    <p data-testid="editor-core-ready">
-      Openframe editor core {state.version} is ready. Design objects stay outside the DOM.
+    <p className="core-chip" data-testid="editor-core-ready">
+      Core {state.version}
     </p>
   )
 }

@@ -1,3 +1,3 @@
 export function PrototypePanel() {
-  return <section data-testid="prototype-panel">Prototype</section>
+  return <section className="subpane" data-testid="prototype-panel"><span className="pane-kicker">Prototype</span><p>Flow from Frame 1</p></section>
 }

@@ -30,7 +30,7 @@ export function WorkspaceDashboard({
   const [selectedId, setSelectedId] = useState(initialId)
 
   return (
-    <section aria-label="Workspace dashboard" data-testid="workspace-dashboard">
+    <section className="file-strip" aria-label="Workspace dashboard" data-testid="workspace-dashboard">
       <WorkspaceSwitcher workspaces={workspaces} selectedId={selectedId} onSelect={setSelectedId} />
       <FileActions />
       <SyncStatusBadge status={syncStatus} />

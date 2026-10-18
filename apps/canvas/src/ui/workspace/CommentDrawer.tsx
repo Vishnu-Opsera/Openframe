@@ -1,3 +1,3 @@
 export function CommentDrawer() {
-  return <aside data-testid="comment-drawer">Comments</aside>
+  return <aside className="subpane" data-testid="comment-drawer"><span className="pane-kicker">Comments</span><p>No open threads</p></aside>
 }

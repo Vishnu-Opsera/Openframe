@@ -1,7 +1,6 @@
 import { useI18n } from '../apps/canvas/src/i18n'
 import { ShellChrome, type EditorHostState } from './components/ShellChrome'
 import { WorkspaceDashboard } from './dashboard/WorkspaceDashboard'
-import { CanvasSurface } from '../web/src/canvas/CanvasSurface'
 import { EditorWorkspace } from '../apps/canvas/src/ui/workspace/EditorWorkspace'
 import { loadDefaultWorkspace } from './workspace'
 
@@ -32,9 +31,10 @@ export function App() {
       fileCount={loaded.workspace.files.length}
       loadError={null}
     >
-      <WorkspaceDashboard />
-      <CanvasSurface />
-      <EditorWorkspace />
+      <div className="studio">
+        <WorkspaceDashboard />
+        <EditorWorkspace />
+      </div>
     </ShellChrome>
     </div>
   )

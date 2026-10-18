@@ -6,13 +6,13 @@ const actions = [
 
 export function FileActions() {
   return (
-    <div>
+    <div className="file-actions">
       {actions.map((action) => (
         <button key={action.id} type="button" data-testid={action.id} disabled aria-label={action.label}>
           {action.label}
         </button>
       ))}
-      <p>File persistence is not available yet.</p>
+      <p className="file-note">File persistence is not available yet.</p>
     </div>
   )
 }

@@ -35,29 +35,40 @@ export function ShellChrome({
       <header className="top-bar" data-testid="canvas-top-bar">
         <div className="brand">
           <span className="mark" aria-hidden="true" />
-          <div>
-            <p className="product">Openframe</p>
-            <h1>{workspaceName}</h1>
-          </div>
+          <p className="product">Openframe</p>
         </div>
-        <p className="sync" data-testid="canvas-sync-label">
-          {syncLabel}
-        </p>
+        <div className="file-crumb">
+          <h1>{workspaceName}</h1>
+          <span className="crumb-sep" aria-hidden="true">/</span>
+          <span className="file-chip">Untitled</span>
+        </div>
+        <div className="top-actions">
+          <span className="zoom-chip">100%</span>
+          <p className="sync" data-testid="canvas-sync-label">
+            {syncLabel}
+          </p>
+          <button type="button" className="share-button">Share</button>
+        </div>
       </header>
       <main className="workspace">
         <section className="editor-host" data-testid="canvas-editor-host" aria-label="Editor host">
-          <p data-testid="canvas-editor-host-copy">{editorHostCopy(editorHostState, loadError)}</p>
-          {editorHostState !== 'unavailable' ? <EditorViewport /> : null}
-          {editorHostState !== 'unavailable' ? (
-            <p className="file-count" data-testid="canvas-file-count">
-              {fileCount === 0 ? 'Empty workspace' : `${fileCount} files`}
-            </p>
-          ) : null}
+          {children}
+          <footer className="bottom-bar">
+            <span>Page 1</span>
+            <span className="bottom-spacer" />
+            <span>100%</span>
+            <p className="sr-only" data-testid="canvas-editor-host-copy">{editorHostCopy(editorHostState, loadError)}</p>
+            {editorHostState !== 'unavailable' ? <EditorViewport /> : null}
+            {editorHostState !== 'unavailable' ? (
+              <p className="sr-only file-count" data-testid="canvas-file-count">
+                {fileCount === 0 ? 'Empty workspace' : `${fileCount} files`}
+              </p>
+            ) : null}
+          </footer>
         </section>
         <aside className="status" data-testid="canvas-status-region" aria-label="Operational status">
           <h2>Status</h2>
           <p>UI chrome only. Scene rendering stays outside this shell.</p>
-          {children}
         </aside>
       </main>
     </div>

@@ -30,6 +30,29 @@ export type EditorCoreLoad = EditorCoreReady | EditorCoreLoadError
 const DEFAULT_CAPABILITIES = ['status']
 const DEFAULT_BOUNDARY = 'external'
 
+type WasmGlueModule = {
+  init_editor_core?: () => Promise<unknown> | unknown
+  default?: (moduleOrPath?: string) => Promise<unknown> | unknown
+}
+
+async function loadPublicWasmModule(modulePath: string, binaryPath: string): Promise<WasmGlueModule> {
+  const response = await fetch(modulePath)
+  if (!response.ok) {
+    throw new Error(`Unable to fetch ${modulePath}`)
+  }
+  const source = await response.text()
+  const blobUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }))
+  try {
+    const module = (await import(/* @vite-ignore */ blobUrl)) as WasmGlueModule
+    if (module.default) {
+      await module.default(binaryPath)
+    }
+    return module
+  } finally {
+    URL.revokeObjectURL(blobUrl)
+  }
+}
+
 function isManifest(value: unknown): value is EditorCoreManifest {
   if (typeof value !== 'object' || value === null) {
     return false
@@ -71,8 +94,7 @@ export function normalizeLoadError(error: unknown): EditorCoreLoadError {
 
 export async function loadEditorCore(
   manifest: unknown = successFixture,
-  loadModule: (modulePath: string) => Promise<{ init_editor_core?: () => Promise<unknown> | unknown }> = (modulePath) =>
-    import(/* @vite-ignore */ modulePath),
+  loadModule: (modulePath: string, binaryPath: string) => Promise<WasmGlueModule> = loadPublicWasmModule,
 ): Promise<EditorCoreLoad> {
   if (!isManifest(manifest) || manifest.name !== 'editor-core' || manifest.runtime_target !== 'wasm32-unknown-unknown') {
     return normalizeLoadError(failureFixture)
@@ -83,7 +105,7 @@ export async function loadEditorCore(
     if (!binary.ok) {
       return normalizeLoadError(failureFixture)
     }
-    const module = await loadModule(manifest.module)
+    const module = await loadModule(manifest.module, manifest.binary)
     if (!module.init_editor_core) {
       return normalizeLoadError(failureFixture)
     }
