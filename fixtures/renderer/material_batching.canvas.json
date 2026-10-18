@@ -1,0 +1,5 @@
+{
+  "materials": ["red", "blue", "green", "black"],
+  "opacityGroups": [255, 128],
+  "primitives": ["fill", "stroke", "fill", "stroke"]
+}

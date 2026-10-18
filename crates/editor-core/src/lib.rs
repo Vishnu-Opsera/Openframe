@@ -1,4 +1,5 @@
 pub mod render_adapter;
+pub mod renderer;
 pub mod render_tree;
 pub mod scene_graph;
 pub mod transactions;

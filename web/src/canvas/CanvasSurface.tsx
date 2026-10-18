@@ -14,7 +14,7 @@ function countVisible(nodes: SceneNode[] | undefined): number {
 
 declare global {
   interface Window {
-    canvasDebug?: { lastRenderDeltaCount: number }
+    canvasDebug?: { lastRenderDeltaCount: number; backend: 'webgpu' | 'webgl2' }
   }
 }
 
@@ -23,10 +23,11 @@ export function CanvasSurface() {
     void fetch('/fixtures/renderer/basic_scene.canvas.json')
       .then((response) => response.json())
       .then((scene: { pages?: SceneNode[] }) => {
-        window.canvasDebug = { lastRenderDeltaCount: countVisible(scene.pages) }
+        const backend = navigator.gpu ? 'webgpu' : 'webgl2'
+        window.canvasDebug = { lastRenderDeltaCount: countVisible(scene.pages), backend }
       })
       .catch(() => {
-        window.canvasDebug = { lastRenderDeltaCount: 0 }
+        window.canvasDebug = { lastRenderDeltaCount: 0, backend: navigator.gpu ? 'webgpu' : 'webgl2' }
       })
   }, [])
 
