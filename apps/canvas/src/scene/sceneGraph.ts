@@ -28,6 +28,8 @@ export function createEmptyDocument(): SceneDocument {
     vectorPaths: {},
     textNodes: {},
     selectedPointId: null,
+    componentRegistry: { components: {}, instances: {} },
+    review: { links: [], threads: [], versions: [] },
   }
 }
 

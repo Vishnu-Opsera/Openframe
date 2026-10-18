@@ -31,6 +31,11 @@ export type EditorCommand =
   | { type: 'updateGridLayout'; nodeId: string; columns: number; padding: number; gap: number }
   | { type: 'reorderAutoLayoutChild'; nodeId: string; childId: string; index: number }
   | { type: 'resizeAutoLayoutFrame'; nodeId: string; width: number; height: number }
+  | { type: 'createComponent'; componentId: string }
+  | { type: 'createInstance'; componentId: string; instanceId: string }
+  | { type: 'switchVariant'; instanceId: string; variant: string }
+  | { type: 'resetInstanceOverride'; instanceId: string }
+  | { type: 'detachInstance'; instanceId: string }
   | { type: 'undo' }
   | { type: 'redo' }
 

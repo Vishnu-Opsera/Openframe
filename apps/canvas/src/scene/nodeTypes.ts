@@ -20,4 +20,6 @@ export interface SceneDocument {
   vectorPaths: Record<string, import('./vectorPath.ts').VectorPathNode>
   textNodes: Record<string, import('./textNode.ts').TextNode>
   selectedPointId: string | null
+  componentRegistry: import('./components.ts').ComponentRegistry
+  review: import('../collaboration/versionHistory.ts').ReviewState
 }
