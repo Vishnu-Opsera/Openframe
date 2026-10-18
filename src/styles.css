@@ -170,6 +170,7 @@ h1 { font-size: 13px; font-weight: 600; color: var(--muted); }
 }
 
 .editor-app {
+  height: 100%;
   min-height: 0;
   display: grid;
   grid-template-columns: 76px 240px minmax(0, 1fr) 280px;
@@ -199,6 +200,7 @@ h1 { font-size: 13px; font-weight: 600; color: var(--muted); }
 }
 
 .tool-stack button:hover, .tool-rail button:hover { background: #2a2b31; }
+.tool-stack button[data-active="true"] { background: #3a241d; color: #ffd7c8; }
 
 .left-pane, .right-pane {
   min-height: 0;
@@ -224,12 +226,17 @@ h1 { font-size: 13px; font-weight: 600; color: var(--muted); }
   padding: 0 8px 12px;
 }
 
-.layers-tree li {
+.layers-tree li button {
+  width: 100%;
+  text-align: left;
   padding: 8px 10px;
+  border: 0;
   border-radius: 8px;
+  background: transparent;
   font-size: 13px;
   text-transform: capitalize;
 }
+.layers-tree li button[data-selected="true"] { background: #3a241d; }
 
 .layers-tree li:hover, .layers-tree li[data-layer-kind="component"] { background: #26272d; }
 

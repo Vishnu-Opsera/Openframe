@@ -11,6 +11,14 @@ import type { SceneDocument } from '../scene/nodeTypes.ts'
 
 let documentState = createEmptyDocument()
 let transactionCount = 1
+const documentListeners = new Set<() => void>()
+
+export function subscribeDocument(listener: () => void): () => void {
+  documentListeners.add(listener)
+  return () => {
+    documentListeners.delete(listener)
+  }
+}
 
 function error(commandName: string, code: string, message: string): EditorCommandResult {
   return { status: 'error', transactionId: '', changedNodeIds: [], renderDeltaId: '', errors: [{ code, message, commandName, recoverable: true }] }
@@ -25,6 +33,11 @@ export function isCommandAvailable(commandName: string): boolean {
 }
 
 export function dispatchEditorCommand(command: EditorCommand): EditorCommandResult {
+  queueMicrotask(() => {
+    for (const listener of documentListeners) {
+      listener()
+    }
+  })
   if (command.type === 'undo') {
     documentState = undoTransaction(documentState)
     return { status: 'ok', transactionId: 'undo', changedNodeIds: [], renderDeltaId: notifyRender([], 'undo'), errors: [] }

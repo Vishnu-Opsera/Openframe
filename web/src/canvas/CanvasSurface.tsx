@@ -1,9 +1,13 @@
 import { useEffect, useRef } from 'react'
+import { currentDocument } from '../../../apps/canvas/src/editor/commandBus.ts'
+import type { EditorTool } from '../../../apps/canvas/src/ui/toolbar/Toolbar.tsx'
 
 type SceneNode = {
   hidden?: boolean
   children?: SceneNode[]
 }
+
+const board = { x: 72, y: 48, width: 880, height: 560 }
 
 function countVisible(nodes: SceneNode[] | undefined): number {
   if (!nodes) {
@@ -18,7 +22,7 @@ declare global {
   }
 }
 
-function paintStage(canvas: HTMLCanvasElement) {
+function paintStage(canvas: HTMLCanvasElement, selectedId: string | null) {
   const rect = canvas.getBoundingClientRect()
   const width = Math.max(rect.width, 320)
   const height = Math.max(rect.height, 240)
@@ -51,44 +55,53 @@ function paintStage(canvas: HTMLCanvasElement) {
     context.lineTo(width, y)
     context.stroke()
   }
-  const boardWidth = Math.min(760, width - 96)
-  const boardHeight = Math.min(460, height - 96)
-  const originX = (width - boardWidth) / 2
-  const originY = (height - boardHeight) / 2
-  context.fillStyle = 'rgba(0,0,0,0.35)'
-  context.fillRect(originX + 12, originY + 16, boardWidth, boardHeight)
-  context.fillStyle = '#f7f4ee'
-  context.fillRect(originX, originY, boardWidth, boardHeight)
-  context.fillStyle = '#e4572e'
-  context.fillRect(originX + 36, originY + 36, 72, 8)
-  context.fillStyle = '#17181c'
-  context.font = '600 42px ui-sans-serif, system-ui, sans-serif'
-  context.fillText('Design, owned.', originX + 36, originY + 110)
-  context.fillStyle = '#5c574e'
-  context.font = '16px ui-sans-serif, system-ui, sans-serif'
-  context.fillText('A quiet canvas for product teams.', originX + 36, originY + 142)
-  context.fillStyle = '#111216'
-  context.fillRect(originX + 36, originY + 188, 148, 44)
-  context.fillStyle = '#f7f4ee'
-  context.font = '600 14px ui-sans-serif, system-ui, sans-serif'
-  context.fillText('Start a frame', originX + 56, originY + 215)
-  context.strokeStyle = '#d9d3c7'
-  context.strokeRect(originX + 200, originY + 188, 148, 44)
-  context.fillStyle = '#17181c'
-  context.fillText('Invite', originX + 248, originY + 215)
+  context.fillStyle = 'rgba(0,0,0,0.28)'
+  context.fillRect(board.x + 10, board.y + 14, board.width, board.height)
+  context.fillStyle = '#f4f1ea'
+  context.fillRect(board.x, board.y, board.width, board.height)
+
+  const documentState = currentDocument()
+  const page = documentState.nodes.page
+  const children = page?.childIds ?? []
+  if (children.length === 0 && Object.keys(documentState.textNodes).length === 0) {
+    context.fillStyle = '#8a847a'
+    context.font = '15px ui-sans-serif, system-ui, sans-serif'
+    context.fillText('Frame, rectangle, or text. Click the canvas to place it.', board.x + 28, board.y + 40)
+  }
+  for (const id of children) {
+    const node = documentState.nodes[id]
+    if (!node) {
+      continue
+    }
+    context.fillStyle = node.fill === 'none' ? '#ffffff' : node.fill
+    context.fillRect(board.x + node.x, board.y + node.y, node.width, node.height)
+    context.strokeStyle = id === selectedId ? '#e4572e' : 'rgba(23,24,28,0.18)'
+    context.lineWidth = id === selectedId ? 2 : 1
+    context.strokeRect(board.x + node.x, board.y + node.y, node.width, node.height)
+    context.fillStyle = '#2c2924'
+    context.font = '12px ui-sans-serif, system-ui, sans-serif'
+    context.fillText(node.kind, board.x + node.x + 10, board.y + node.y + 20)
+  }
+  let textIndex = 0
+  for (const text of Object.values(documentState.textNodes)) {
+    context.fillStyle = text.id === selectedId ? '#e4572e' : '#17181c'
+    context.font = '600 28px ui-sans-serif, system-ui, sans-serif'
+    context.fillText(text.content, board.x + 36, board.y + 92 + textIndex * 40)
+    textIndex += 1
+  }
 }
 
-export function CanvasSurface() {
+export function CanvasSurface({ revision = 0, tool = 'frame', selectedId = null, onPlace, onSelect }: { revision?: number; tool?: EditorTool; selectedId?: string | null; onPlace?: (tool: EditorTool, x: number, y: number) => void; onSelect?: (id: string | null) => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (canvas) {
-      paintStage(canvas)
+      paintStage(canvas, selectedId)
     }
     const onResize = () => {
       if (canvasRef.current) {
-        paintStage(canvasRef.current)
+        paintStage(canvasRef.current, selectedId)
       }
     }
     window.addEventListener('resize', onResize)
@@ -103,7 +116,32 @@ export function CanvasSurface() {
         window.canvasDebug = { lastRenderDeltaCount: 0, backend: navigator.gpu ? 'webgpu' : 'webgl2' }
       })
     return () => window.removeEventListener('resize', onResize)
-  }, [])
+  }, [revision, selectedId])
 
-  return <canvas ref={canvasRef} className="design-canvas" data-testid="canvas-surface" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className="design-canvas"
+      data-testid="canvas-surface"
+      onPointerDown={(event) => {
+        const canvas = canvasRef.current
+        if (!canvas) {
+          return
+        }
+        const rect = canvas.getBoundingClientRect()
+        const x = event.clientX - rect.left - board.x
+        const y = event.clientY - rect.top - board.y
+        if (tool === 'select') {
+          const page = currentDocument().nodes.page
+          const hit = [...(page?.childIds ?? [])].reverse().find((id) => {
+            const node = currentDocument().nodes[id]
+            return node ? x >= node.x && y >= node.y && x <= node.x + node.width && y <= node.y + node.height : false
+          })
+          onSelect?.(hit ?? null)
+          return
+        }
+        onPlace?.(tool, Math.max(16, x), Math.max(16, y))
+      }}
+    />
+  )
 }
