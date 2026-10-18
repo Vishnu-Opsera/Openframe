@@ -1,0 +1,5 @@
+kind: CronJob
+metadata:
+  name: canvas-postgres-objectref-backup
+env:
+  BACKUP_RETENTION_DAYS: "7"

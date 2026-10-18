@@ -1,0 +1,1 @@
+export function createObjectReferenceManifest(rows: Array<{ file_id: string; version_id: string; object_key: string; checksum: string; created_at: string }>) { return { schema_version: 1, file_versions: rows } }

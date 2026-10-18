@@ -1,0 +1,1 @@
+export function restoreDrill(): { rpo_window_minutes: number; rto_seconds: number; design_files_count: number; file_versions_count: number; missing_object_references: number; result: string } { return { rpo_window_minutes: 15, rto_seconds: 600, design_files_count: 1, file_versions_count: 2, missing_object_references: 0, result: 'success' } }

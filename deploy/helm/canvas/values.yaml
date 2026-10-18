@@ -12,3 +12,5 @@ objectStorage:
   resources: { requests: { cpu: 100m }, limits: { cpu: 500m } }
 ingress:
   websocketUpgrade: true
+backup:
+  schedule: "*/15 * * * *"
