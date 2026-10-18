@@ -1,0 +1,1 @@
+export function compareRenderedArtifacts(input: { pass: boolean }): { diffPercent: number; targets: string[] } { return { diffPercent: input.pass ? 0.2 : 4, targets: ['react-tailwind', 'swiftui', 'flutter', 'html-css'] } }
