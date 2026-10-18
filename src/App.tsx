@@ -1,6 +1,7 @@
 import { useI18n } from '../apps/canvas/src/i18n'
 import { ShellChrome, type EditorHostState } from './components/ShellChrome'
 import { WorkspaceDashboard } from './dashboard/WorkspaceDashboard'
+import { CanvasSurface } from '../web/src/canvas/CanvasSurface'
 import { loadDefaultWorkspace } from './workspace'
 
 export function App() {
@@ -31,6 +32,7 @@ export function App() {
       loadError={null}
     >
       <WorkspaceDashboard />
+      <CanvasSurface />
     </ShellChrome>
     </div>
   )

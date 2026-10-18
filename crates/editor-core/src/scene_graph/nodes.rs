@@ -34,6 +34,8 @@ pub struct SceneNode {
     pub vector_path: Option<String>,
     pub component_id: Option<NodeId>,
     pub token_id: Option<String>,
+    #[serde(default)]
+    pub hidden: bool,
 }
 
 impl SceneNode {
@@ -61,6 +63,7 @@ impl SceneNode {
             vector_path: None,
             component_id: None,
             token_id: None,
+            hidden: false,
         }
     }
 }

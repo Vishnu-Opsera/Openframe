@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "document_id": "doc-nested",
+  "pages": [
+    {
+      "id": "page-1",
+      "kind": "page",
+      "name": "Page",
+      "children": [
+        {
+          "id": "group-1",
+          "kind": "group",
+          "name": "Group",
+          "children": [
+            { "id": "path-1", "kind": "vector", "name": "Path", "children": [], "vector_path": "M0 0 L10 10", "fills": [{ "color": "#222222", "opacity": 1 }], "strokes": [] },
+            { "id": "text-1", "kind": "text", "name": "Label", "children": [], "text": "Openframe", "hidden": false },
+            { "id": "hidden-1", "kind": "frame", "name": "Hidden", "children": [], "hidden": true }
+          ]
+        }
+      ]
+    }
+  ]
+}
