@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { I18nProvider } from '../apps/canvas/src/i18n'
 import { App } from './App'
 import { registerServiceWorker } from './pwa/registerServiceWorker'
 import './styles.css'
@@ -10,9 +11,13 @@ if (!rootElement) {
   throw new Error('Root element is missing from index.html.')
 }
 
+const locale = new URLSearchParams(window.location.search).get('locale')
+
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    <I18nProvider locale={locale}>
+      <App />
+    </I18nProvider>
   </StrictMode>,
 )
 

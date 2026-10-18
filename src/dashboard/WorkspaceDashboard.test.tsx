@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import recentFiles from '../../tests/fixtures/dashboard/recent-files.json'
-import workspaces from '../../tests/fixtures/dashboard/workspaces.json'
 import { WorkspaceDashboard } from './WorkspaceDashboard'
 
 describe('WorkspaceDashboard', () => {
@@ -13,7 +12,7 @@ describe('WorkspaceDashboard', () => {
     expect(screen.getByTestId('file-action-import')).toBeDisabled()
     expect(screen.getByTestId('sync-status')).toHaveTextContent('Offline')
     expect(screen.getByTestId('recent-files').children).toHaveLength(recentFiles.files.length)
-    expect(screen.getByRole('option', { name: workspaces.workspaces[0]?.name })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'Northwind Product' })).toBeInTheDocument()
   })
 
   it('renders an empty recent-file state', () => {

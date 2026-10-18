@@ -1,0 +1,10 @@
+{
+  "name": "canvas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm --dir ../.. exec vitest run",
+    "test:e2e": "pnpm --dir ../.. exec playwright test",
+    "lint": "pnpm --dir ../.. exec eslint apps/canvas/src src/main.tsx src/App.tsx"
+  }
+}

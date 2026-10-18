@@ -1,8 +1,10 @@
+import { useI18n } from '../apps/canvas/src/i18n'
 import { ShellChrome, type EditorHostState } from './components/ShellChrome'
 import { WorkspaceDashboard } from './dashboard/WorkspaceDashboard'
 import { loadDefaultWorkspace } from './workspace'
 
 export function App() {
+  const i18n = useI18n()
   const loaded = loadDefaultWorkspace()
 
   if (!loaded.ok) {
@@ -20,6 +22,7 @@ export function App() {
   const editorHostState: EditorHostState = loaded.workspace.files.length === 0 ? 'empty' : 'ready'
 
   return (
+    <div data-testid="app-locale-root" dir={i18n.dir} lang={i18n.locale}>
     <ShellChrome
       workspaceName={loaded.workspace.workspaceName}
       syncLabel={loaded.workspace.syncLabel}
@@ -29,5 +32,6 @@ export function App() {
     >
       <WorkspaceDashboard />
     </ShellChrome>
+    </div>
   )
 }
