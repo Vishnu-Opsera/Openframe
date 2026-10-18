@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "entrypoint": { "type": "string" },
+    "capabilities": {
+      "type": "array",
+      "items": { "enum": ["scene.read", "selection.read", "comments.read", "comments.write", "scene.mutate", "host.notify"] }
+    }
+  }
+}
