@@ -1,4 +1,5 @@
 pub mod culling;
+pub mod tile_cache;
 pub mod webgl2;
 pub mod webgpu;
 

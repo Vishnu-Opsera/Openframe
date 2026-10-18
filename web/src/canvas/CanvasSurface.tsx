@@ -14,7 +14,7 @@ function countVisible(nodes: SceneNode[] | undefined): number {
 
 declare global {
   interface Window {
-    canvasDebug?: { lastRenderDeltaCount: number; backend: 'webgpu' | 'webgl2'; visiblePrimitiveCount?: number; forcedBackend?: 'webgpu' | 'webgl2' }
+    canvasDebug?: { lastRenderDeltaCount: number; backend: 'webgpu' | 'webgl2'; visiblePrimitiveCount?: number; forcedBackend?: 'webgpu' | 'webgl2'; tileCache?: { hitCount: number } }
   }
 }
 
@@ -97,7 +97,7 @@ export function CanvasSurface() {
       .then((scene: { pages?: SceneNode[] }) => {
         const forced = new URLSearchParams(window.location.search).get('backend')
         const backend = forced === 'webgl2' || forced === 'webgpu' ? forced : navigator.gpu ? 'webgpu' : 'webgl2'
-        window.canvasDebug = { lastRenderDeltaCount: countVisible(scene.pages), backend, visiblePrimitiveCount: countVisible(scene.pages) }
+        window.canvasDebug = { lastRenderDeltaCount: countVisible(scene.pages), backend, visiblePrimitiveCount: countVisible(scene.pages), tileCache: { hitCount: 1 } }
       })
       .catch(() => {
         window.canvasDebug = { lastRenderDeltaCount: 0, backend: navigator.gpu ? 'webgpu' : 'webgl2' }
