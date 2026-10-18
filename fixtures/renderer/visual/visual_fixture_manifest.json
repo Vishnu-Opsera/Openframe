@@ -1,0 +1,10 @@
+{
+  "maxDiffPixelRatio": 0.01,
+  "fixtures": [
+    { "file": "basic_vectors.canvas.json", "backends": ["webgpu", "webgl2"], "snapshot": "basic_vectors" },
+    { "file": "opacity_and_blends.canvas.json", "backends": ["webgpu", "webgl2"], "snapshot": "opacity_and_blends" },
+    { "file": "clipping_and_masks.canvas.json", "backends": ["webgpu", "webgl2"], "snapshot": "clipping_and_masks" },
+    { "file": "text_and_images.canvas.json", "backends": ["webgpu", "webgl2"], "snapshot": "text_and_images" },
+    { "file": "cached_static_tiles.canvas.json", "backends": ["webgpu", "webgl2"], "snapshot": "cached_static_tiles" }
+  ]
+}

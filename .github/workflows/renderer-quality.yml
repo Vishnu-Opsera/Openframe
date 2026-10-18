@@ -1,0 +1,14 @@
+name: renderer-quality
+on:
+  workflow_dispatch:
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pnpm exec playwright test web/tests/renderer/visual-regression.spec.ts --project=chromium
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: renderer-visual
+          path: test-results/renderer-visual
