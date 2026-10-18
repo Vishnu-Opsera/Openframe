@@ -2,5 +2,7 @@
   "app.name": "Openframe",
   "navigation.dashboard": "Dashboard",
   "navigation.editor": "Editor",
-  "common.loading": "Loading"
+  "common.loading": "Loading",
+  "dashboard.title": "Workspace",
+  "editor.title": "Editor"
 }

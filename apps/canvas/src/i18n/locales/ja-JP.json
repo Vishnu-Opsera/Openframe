@@ -1,0 +1,8 @@
+{
+  "app.name": "Openframe",
+  "navigation.dashboard": "ダッシュボード",
+  "navigation.editor": "エディター",
+  "common.loading": "読み込み中",
+  "dashboard.title": "ワークスペース",
+  "editor.title": "エディター"
+}
