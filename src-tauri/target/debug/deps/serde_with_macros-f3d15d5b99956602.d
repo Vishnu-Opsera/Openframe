@@ -1,0 +1,8 @@
+/Users/vishnuvasudevan/Openframe/Openframe/src-tauri/target/debug/deps/serde_with_macros-f3d15d5b99956602.d: /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/lib.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/apply.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/lazy_bool.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/utils.rs
+
+/Users/vishnuvasudevan/Openframe/Openframe/src-tauri/target/debug/deps/libserde_with_macros-f3d15d5b99956602.dylib: /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/lib.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/apply.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/lazy_bool.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/utils.rs
+
+/Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/lib.rs:
+/Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/apply.rs:
+/Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/lazy_bool.rs:
+/Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_with_macros-3.24.0/src/utils.rs:

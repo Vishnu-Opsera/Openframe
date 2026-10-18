@@ -1,0 +1,7 @@
+{
+  "runtime": "browser",
+  "os": "unknown",
+  "arch": "unknown",
+  "app_version": "0.1.0",
+  "tauri_major_version": 0
+}

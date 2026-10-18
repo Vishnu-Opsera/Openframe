@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Least-privilege capability for the Openframe runtime information command.","local":true,"windows":["main"],"permissions":["core:default"]}}

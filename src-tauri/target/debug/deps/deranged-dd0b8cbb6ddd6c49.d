@@ -1,0 +1,8 @@
+/Users/vishnuvasudevan/Openframe/Openframe/src-tauri/target/debug/deps/deranged-dd0b8cbb6ddd6c49.d: /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/lib.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/unsafe_wrapper.rs
+
+/Users/vishnuvasudevan/Openframe/Openframe/src-tauri/target/debug/deps/libderanged-dd0b8cbb6ddd6c49.rlib: /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/lib.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/unsafe_wrapper.rs
+
+/Users/vishnuvasudevan/Openframe/Openframe/src-tauri/target/debug/deps/libderanged-dd0b8cbb6ddd6c49.rmeta: /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/lib.rs /Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/unsafe_wrapper.rs
+
+/Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/lib.rs:
+/Users/vishnuvasudevan/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deranged-0.5.9/src/unsafe_wrapper.rs:
