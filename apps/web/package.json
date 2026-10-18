@@ -1,0 +1,9 @@
+{
+  "name": "canvas-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:integration": "pnpm --dir ../.. exec vitest run",
+    "lint": "pnpm --dir ../.. exec eslint apps/web/src packages/document-storage/src"
+  }
+}

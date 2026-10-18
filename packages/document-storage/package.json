@@ -1,0 +1,8 @@
+{
+  "name": "@canvas/document-storage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm --dir ../.. exec vitest run"
+  }
+}
