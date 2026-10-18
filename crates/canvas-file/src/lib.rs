@@ -1,3 +1,4 @@
+pub mod migrations;
 mod validator;
 
 pub use validator::{
