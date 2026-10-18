@@ -1,0 +1,12 @@
+node_modules
+dist
+playwright-report
+test-results
+.DS_Store
+.forge-commit-ready
+.forge/project-id
+.forge/hook-version
+.forge/changed-files.log
+.cursor/hooks.json
+.cursor/hooks/
+.cursor/rules/forge-workflow.mdc
